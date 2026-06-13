@@ -15,6 +15,9 @@ public class MochilaTest {
 
     @Test
     public void testGuardarObjetosHastaLimite() {
+        System.out.println("--- Prueba: Guardar objetos hasta el límite ---");
+        System.out.println("Guardando 3 objetos en la mochila...");
+        
         mochila.guardarEnMochila(new Item("Objeto1"));
         mochila.guardarEnMochila(new Item("Objeto2"));
         mochila.guardarEnMochila(new Item("Objeto3"));
@@ -24,6 +27,9 @@ public class MochilaTest {
 
     @Test
     public void testRechazarGuardarAlSuperarLimite() {
+        System.out.println("--- Prueba: Rechazar guardar al superar el límite ---");
+        System.out.println("Intentando agregar un cuarto objeto a la mochila llena...");
+        
         mochila.guardarEnMochila(new Item("Objeto1"));
         mochila.guardarEnMochila(new Item("Objeto2"));
         mochila.guardarEnMochila(new Item("Objeto3"));
@@ -39,6 +45,9 @@ public class MochilaTest {
 
     @Test
     public void testAmpliarCapacidadYPermitirMas() {
+        System.out.println("--- Prueba: Ampliar capacidad de la mochila ---");
+        System.out.println("Mochila llena. Solicitando ampliación de espacio...");
+        
         mochila.guardarEnMochila(new Item("Objeto1"));
         mochila.guardarEnMochila(new Item("Objeto2"));
         mochila.guardarEnMochila(new Item("Objeto3"));

@@ -18,17 +18,21 @@ public class parameterMailTest {
 
     public static Collection<Object[]> datosEmails() {
         return Arrays.asList(new Object[][]{
-            {"camilabiarnes@tototita.com", true},
-            {"camilabiarnes@tototitacom", false},
-            {"camilabiarnestototita.com", false},
-            {"@camilabiarnestototita.com", false},
-            {".camilabiarnestototita@com", false}
+            {"camilabiarnes@gmail.com", true},
+            {"camilabiarnes@gmailcom", false},
+            {"camilabiarnesgmail.com", false},
+            {"@camilabiarnesgmail.com", false},
+            {".camilabiarnes@gmail", false}
         });
     }
 
     @ParameterizedTest
     @MethodSource("datosEmails")
     public void testValidarEmailParametrizado(String email, boolean resultadoEsperado) {
+        System.out.println("------------------------------------");
+        System.out.println("Evaluando formato de correo: " + email);
+        System.out.println("¿Debería ser válido?: " + (resultadoEsperado ? "SÍ" : "NO"));
+        
         boolean resultadoActual = ValidarMail(email);
         assertEquals(resultadoEsperado, resultadoActual);
     }
