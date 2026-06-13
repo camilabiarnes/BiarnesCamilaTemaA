@@ -1,3 +1,4 @@
+
 package com.ulp;
 
 public class Usuario {
@@ -36,5 +37,4 @@ public class Usuario {
 
     public String getUser() { return user; }
     public int getPass() { return pass; }
-
 }
