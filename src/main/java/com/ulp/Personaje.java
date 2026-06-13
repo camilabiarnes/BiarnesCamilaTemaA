@@ -3,7 +3,7 @@ package com.ulp;
 public class Personaje {
 
     private String nombre;
-    private int vida;
+    int vida;
     public int CapacidadOfensiva;
     private Mochila mochila;
 

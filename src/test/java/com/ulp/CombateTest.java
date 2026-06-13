@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class CombateTest {
 
     private Personaje heroe;
@@ -33,22 +34,25 @@ public class CombateTest {
         }
     }
 
-    @Test
+   @Test
     public void testGolpeRestaVidaSinMorir() {
+        System.out.println("Enemigo inicia con 100 de vida");
+        System.out.println("Personaje ataca pegando un golpe de 20");
+        
         enemigo.setVida(100);
         heroe.CapacidadOfensiva = 20;
         heroe.atacar(enemigo);
         assertEquals(80, enemigo.getVida());
     }
-
-    @Test
+ @Test
     public void testGolpeMataEnemigo() {
+        System.out.println("Enemigo se encuentra debilitado con 30 de vida");
+        System.out.println("Personaje ataca pegando un golpe de 30");
         enemigo.setVida(30);
         heroe.CapacidadOfensiva = 30;
         heroe.atacar(enemigo);
         assertEquals(0, enemigo.getVida());
     }
-
     @Test
     public void testGolpeExcesivoNoBajaDeCero() {
         enemigo.setVida(10);
@@ -65,8 +69,9 @@ public class CombateTest {
         assertEquals(45, heroe.getVida());
     }
 
-    @Test
+   @Test
     public void testNoPuedeCurarse() {
+        System.out.println("Personaje se encuentra herido y con poca vida");
         assertThrows(NullPointerException.class, () -> {
             Comida comidaEncontrada = mochila.buscarComida();
             if (comidaEncontrada == null) {
@@ -74,5 +79,21 @@ public class CombateTest {
             }
             heroe.curarVida(comidaEncontrada);
         });
+    }
+
+    @Test
+    public void testCurarVidaConPocaVida() {
+        System.out.println("Personaje inicia combate con el enemigo");
+        
+        heroe.vida = 68; 
+        System.out.println("Personaje se encuentra herido, tiene 68 de vida");
+        
+        com.ulp.Comida manzana = new com.ulp.Comida("Manzana", 50);
+        System.out.println("Personaje busca en su mochila y saca una manzana");
+        
+        heroe.curarVida(manzana);
+        System.out.println("Personaje consumo comida y curo su vida a 118");
+        
+        assertEquals(118, heroe.vida);
     }
 }
