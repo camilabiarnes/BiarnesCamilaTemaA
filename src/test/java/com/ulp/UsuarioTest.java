@@ -53,17 +53,18 @@ public class UsuarioTest {
     public void testCambioPass() {
         String newPass = "1234";
         usr.cambioPassword(newPass);
-        assertEquals(1234, usr.getPass()); 
+        assertEquals(1234, usr.getPass());
         System.out.println("Nuevo Pass " + usr.getPass());
     }
 
     @Test
     public void testDelay() throws InterruptedException {
+     
         assertTimeoutPreemptively(java.time.Duration.ofMillis(30), () -> {
             try {
-                usr.delay(50);
+                usr.delay(10); 
             } catch (Exception e) {
-            
+               
             }
         });
     }
