@@ -1,23 +1,22 @@
 package com.ulp;
 
-import org.junit.jupiter.api.BeforeAll;
+import java.time.LocalDate;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.time.LocalDate;
-import java.time.Duration;
 
 public class UsuarioTest {
 
     private static Usuario usr;
-    private static int testCounter = 0;
+    private static int contador = 0;
 
     @BeforeAll
     public static void antesDeTodo() {
-        usr = new Usuario("Juanjo", 1212);
-        System.out.println("TEST de usuario");
+        usr = new Usuario("Camila", 1212);
+        System.out.println("TEST de usuario - Camila Biarnes");
     }
 
     @AfterAll
@@ -28,9 +27,9 @@ public class UsuarioTest {
 
     @BeforeEach
     public void setUp() {
-        testCounter++;
+        contador++;
         System.out.println("------------------------------------");
-        System.out.println("Iniciando Test Número: " + testCounter);
+        System.out.println("Iniciando Test Número: " + contador);
     }
 
     @AfterEach
@@ -40,42 +39,40 @@ public class UsuarioTest {
 
     @Test
     public void testValidarUsr() {
-        System.out.println("validarPassword");
         int contra = 2222;
-        boolean resultado = usr.validarPassword(contra);
-        assertTrue(resultado, "La contraseña no coincide, se esperaba que falle");
+        assertFalse(usr.validarPassword(contra), "La contraseña no coincide, se esperaba que falle");
     }
 
     @Test
     public void testValidarEmail() {
-        String email = "juanjo@ulp.edu.ar";
-        boolean tieneArroba = email.contains("@");
-        boolean tienePunto = email.contains(".");
-        boolean largoCorrecto = email.length() < 20;
-        assertTrue(tieneArroba && tienePunto && largoCorrecto);
+        String email = "camila@gmail.com";
+        assertTrue(email.contains("@") && email.contains(".") && email.length() < 20);
     }
 
     @Test
-    public void testChangePass() {
-        System.out.println("cambiopass");
+    public void testCambioPass() {
         String newPass = "1234";
         usr.cambioPassword(newPass);
+        assertEquals(1234, usr.getPass()); 
         System.out.println("Nuevo Pass " + usr.getPass());
-        assertEquals(1234, usr.getPass());
     }
 
     @Test
-    public void testDelay() {
-        System.out.println("delay");
-        assertTimeout(Duration.ofMillis(30), () -> {
-            usr.delay(50);
+    public void testDelay() throws InterruptedException {
+        assertTimeoutPreemptively(java.time.Duration.ofMillis(30), () -> {
+            try {
+                usr.delay(50);
+            } catch (Exception e) {
+            
+            }
         });
     }
 
     @Test
     public void testUsuariosDiferentes() {
-        Usuario u1 = new Usuario("Analía", 5555);
-        Usuario u2 = new Usuario("Pedro", 9999);
+        Usuario u1 = new Usuario("Camila", 4444);
+        Usuario u2 = new Usuario("Marta", 5555);
+        assertTrue(u1.usuariosDiferentes(u2));
         assertNotSame(u1, u2, "mismo usuario");
     }
 }
