@@ -80,7 +80,7 @@ public class CombateTest {
         assertThrows(NullPointerException.class, () -> {
             Comida comidaEncontrada = mochila.buscarComida();
             if (comidaEncontrada == null) {
-                System.out.println("Resultado: La mochila está vacía, no se pudo curar");
+                System.out.println("Resultado: La mochila esta vacía, no se pudo curar");
                 throw new NullPointerException("Comida no encontrada");
             }
             heroe.curarVida(comidaEncontrada);
@@ -94,12 +94,12 @@ public class CombateTest {
         heroe.vida = 68; 
         System.out.println("Personaje se encuentra herido, tiene 68 de vida");
         
-        com.ulp.Comida manzana = new com.ulp.Comida("Manzana", 50);
+        com.ulp.Comida manzana = new com.ulp.Comida("Manzana", 32);
         System.out.println("Personaje busca en su mochila y saca una manzana");
         
         heroe.curarVida(manzana);
-        System.out.println("Personaje consumo comida y curo su vida a 118");
+        System.out.println("Personaje consumo comida y curo su vida a 100");
         
-        assertEquals(118, heroe.vida);
+        assertEquals(100, heroe.vida);
     }
 }

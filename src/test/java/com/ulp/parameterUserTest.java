@@ -20,9 +20,9 @@ public class parameterUserTest {
     @MethodSource("profeDatos")
     public void testChangePassParametrizado(int id, String nombreUsuario, Usuario usuario, int esperado, String nuevoPass) {
         System.out.println("------------------------------------");
-        System.out.println("Ejecutando tanda parametrizada N°: " + id);
-        System.out.println("Cambiando contraseña para: " + nombreUsuario);
-        System.out.println("Nueva contraseña asignada: " + nuevoPass);
+        System.out.println("Ejecutando tanda parametrizada Num: " + id);
+        System.out.println("Cambiando contrasenia para: " + nombreUsuario);
+        System.out.println("Nueva contrasenia asignada: " + nuevoPass);
         
         usuario.cambioPassword(nuevoPass);
         assertEquals(esperado, usuario.getPass()); 

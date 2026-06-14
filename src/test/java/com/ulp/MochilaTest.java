@@ -15,7 +15,7 @@ public class MochilaTest {
 
     @Test
     public void testGuardarObjetosHastaLimite() {
-        System.out.println("--- Prueba: Guardar objetos hasta el límite ---");
+        System.out.println("--- Prueba: Guardar objetos hasta el limite ---");
         System.out.println("Guardando 3 objetos en la mochila...");
         
         mochila.guardarEnMochila(new Item("Objeto1"));
@@ -27,7 +27,7 @@ public class MochilaTest {
 
     @Test
     public void testRechazarGuardarAlSuperarLimite() {
-        System.out.println("--- Prueba: Rechazar guardar al superar el límite ---");
+        System.out.println("--- Prueba: Rechazar guardar al superar el limite ---");
         System.out.println("Intentando agregar un cuarto objeto a la mochila llena...");
         
         mochila.guardarEnMochila(new Item("Objeto1"));

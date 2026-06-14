@@ -29,7 +29,7 @@ public class UsuarioTest {
     public void setUp() {
         contador++;
         System.out.println("------------------------------------");
-        System.out.println("Iniciando Test Número: " + contador);
+        System.out.println("Iniciando Test Numero: " + contador);
     }
 
     @AfterEach

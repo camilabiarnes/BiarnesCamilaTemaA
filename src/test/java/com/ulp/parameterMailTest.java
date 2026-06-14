@@ -31,7 +31,7 @@ public class parameterMailTest {
     public void testValidarEmailParametrizado(String email, boolean resultadoEsperado) {
         System.out.println("------------------------------------");
         System.out.println("Evaluando formato de correo: " + email);
-        System.out.println("¿Debería ser válido?: " + (resultadoEsperado ? "SÍ" : "NO"));
+        System.out.println("¿Debería ser valido?: " + (resultadoEsperado ? "SÍ" : "NO"));
         
         boolean resultadoActual = ValidarMail(email);
         assertEquals(resultadoEsperado, resultadoActual);
