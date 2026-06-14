@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public class CombateTest {
 
     private Personaje heroe;
@@ -34,7 +33,7 @@ public class CombateTest {
         }
     }
 
-   @Test
+    @Test
     public void testGolpeRestaVidaSinMorir() {
         System.out.println("Enemigo inicia con 100 de vida");
         System.out.println("Personaje ataca pegando un golpe de 20");
@@ -44,7 +43,8 @@ public class CombateTest {
         heroe.atacar(enemigo);
         assertEquals(80, enemigo.getVida());
     }
- @Test
+
+    @Test
     public void testGolpeMataEnemigo() {
         System.out.println("Enemigo se encuentra debilitado con 30 de vida");
         System.out.println("Personaje ataca pegando un golpe de 30");
@@ -53,8 +53,12 @@ public class CombateTest {
         heroe.atacar(enemigo);
         assertEquals(0, enemigo.getVida());
     }
+
     @Test
     public void testGolpeExcesivoNoBajaDeCero() {
+        System.out.println("Enemigo tiene solo 10 de vida");
+        System.out.println("Personaje realiza un golpe excesivo de 50 de daño");
+        
         enemigo.setVida(10);
         heroe.CapacidadOfensiva = 50;
         heroe.atacar(enemigo);
@@ -69,12 +73,14 @@ public class CombateTest {
         assertEquals(45, heroe.getVida());
     }
 
-   @Test
-    public void testNoPuedeCurarse() {
+    @Test
+    public void testNoCannotCurarse() {
         System.out.println("Personaje se encuentra herido y con poca vida");
+        System.out.println("Intenta buscar comida en su mochila...");
         assertThrows(NullPointerException.class, () -> {
             Comida comidaEncontrada = mochila.buscarComida();
             if (comidaEncontrada == null) {
+                System.out.println("Resultado: La mochila está vacía, no se pudo curar");
                 throw new NullPointerException("Comida no encontrada");
             }
             heroe.curarVida(comidaEncontrada);
